@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Maydel | Personal Blog.</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================
+           RESET
+        ========================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #52262d;
+            color: white;
+            font-family: "DM Sans", sans-serif;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* =========================
+           HEADER
+        ========================== */
+        header {
+            width: 100%;
+            height: 90px;
+            padding: 18px 28px;
+
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: "Playfair Display", serif;
+            font-size: 27px;
+            font-weight: 400;
+            margin-top: 5px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-link {
+            background: #f9f7f3;
+            color: #24191a;
+
+            padding: 12px 28px;
+            border-radius: 50px;
+
+            font-size: 18px;
+            transition: 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: #e7ffd9;
+            transform: translateY(-2px);
+        }
+
+        .subscribe {
+            background: transparent;
+            color: white;
+
+            border: 1px solid white;
+            border-radius: 50px;
+
+            padding: 11px 25px;
+            font-size: 18px;
+
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            transition: 0.3s ease;
+        }
+
+        .subscribe:hover {
+            background: white;
+            color: #52262d;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        .subscribe:hover .dot {
+            background: #52262d;
+        }
+
+        /* =========================
+           HERO SECTION
+        ========================== */
+        .hero {
+            min-height: 100vh;
+            position: relative;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding-top: 80px;
+            overflow: hidden;
+        }
+
+        /* =========================
+           PHOTO COLLAGE
+        ========================== */
+        .photo-area {
+            position: absolute;
+
+            width: 850px;
+            height: 620px;
+
+            top: 80px;
+            left: 50%;
+
+            transform: translateX(-50%);
+        }
+
+        .main-photo {
+            position: absolute;
+
+            width: 490px;
+            height: 590px;
+
+            left: 50%;
+            top: 0;
+
+            transform: translateX(-50%);
+
+            object-fit: cover;
+            object-position: center;
+
+            z-index: 2;
+        }
+
+        .small-photo {
+            position: absolute;
+            object-fit: cover;
+
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .left-photo {
+            width: 190px;
+            height: 240px;
+
+            left: 5px;
+            top: 35px;
+
+            transform: rotate(-9deg);
+
+            z-index: 3;
+        }
+
+        .right-photo {
+            width: 190px;
+            height: 250px;
+
+            right: 0;
+            top: 275px;
+
+            transform: rotate(12deg);
+
+            z-index: 3;
+        }
+
+        /* =========================
+           HERO TEXT
+        ========================== */
+        .hero-content {
+            position: relative;
+            z-index: 10;
+
+            width: 100%;
+            text-align: center;
+
+            margin-top: 510px;
+        }
+
+        .title-box {
+            display: inline-block;
+
+            background: #e8ffdf;
+            padding: 0 70px 10px;
+
+            min-width: 69%;
+        }
+
+        .hero-title {
+            font-family: "Playfair Display", serif;
+
+            color: #580714;
+
+            font-size: clamp(75px, 10vw, 150px);
+            font-weight: 400;
+
+            line-height: 0.98;
+            letter-spacing: -7px;
+
+            white-space: nowrap;
+        }
+
+        .tagline {
+            margin-top: 35px;
+
+            font-size: 27px;
+            letter-spacing: 1px;
+
+            color: #ffffff;
+        }
+
+        /* =========================
+           ABOUT SECTION
+        ========================== */
+        .about {
+            min-height: 100vh;
+            background: #f4efe8;
+            color: #52262d;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 100px 10%;
+        }
+
+        .about-container {
+            max-width: 1000px;
+            text-align: center;
+        }
+
+        .section-label {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 25px;
+        }
+
+        .about h2 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(45px, 7vw, 85px);
+            font-weight: 400;
+            margin-bottom: 30px;
+        }
+
+        .about p {
+            max-width: 700px;
+            margin: auto;
+
+            font-size: 19px;
+            line-height: 1.8;
+
+            color: #65454a;
+        }
+
+        /* =========================
+           BLOG SECTION
+        ========================== */
+        .blog {
+            background: #52262d;
+            padding: 100px 8%;
+        }
+
+        .blog-heading {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .blog-heading p {
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .blog-heading h2 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(45px, 6vw, 80px);
+            font-weight: 400;
+        }
+
+        .blog-grid {
+            max-width: 1200px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .blog-card {
+            background: #f4efe8;
+            color: #52262d;
+
+            padding: 15px;
+            transition: 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .blog-card img {
+            width: 100%;
+            height: 300px;
+
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .blog-card span {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .blog-card h3 {
+            font-family: "Playfair Display", serif;
+            font-size: 30px;
+            font-weight: 400;
+
+            margin: 12px 0;
+        }
+
+        .blog-card p {
+            line-height: 1.6;
+            color: #75555a;
+            margin-bottom: 15px;
+        }
+
+        /* =========================
+           CONTACT SECTION
+        ========================== */
+        .contact {
+            background: #e8ffdf;
+            color: #52262d;
+
+            padding: 110px 20px;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-family: "Playfair Display", serif;
+
+            font-size: clamp(50px, 7vw, 90px);
+            font-weight: 400;
+
+            margin-bottom: 20px;
+        }
+
+        .contact p {
+            font-size: 18px;
+            margin-bottom: 35px;
+        }
+
+        .contact-btn {
+            display: inline-block;
+
+            background: #52262d;
+            color: white;
+
+            padding: 15px 35px;
+            border-radius: 50px;
+
+            transition: 0.3s;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            background: #6d343e;
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+        footer {
+            background: #3d1b21;
+
+            padding: 30px;
+            text-align: center;
+
+            font-size: 14px;
+            color: #e5d9db;
+        }
+
+        /* =========================
+           MOBILE
+        ========================== */
+        @media (max-width: 900px) {
+
+            header {
+                padding: 20px;
+            }
+
+            nav .nav-link {
+                display: none;
+            }
+
+            .subscribe {
+                padding: 9px 18px;
+                font-size: 14px;
+            }
+
+            .logo {
+                font-size: 22px;
+            }
+
+            .photo-area {
+                width: 100%;
+                height: 550px;
+            }
+
+            .main-photo {
+                width: 340px;
+                height: 500px;
+            }
+
+            .left-photo {
+                width: 135px;
+                height: 180px;
+
+                left: 3%;
+                top: 60px;
+            }
+
+            .right-photo {
+                width: 140px;
+                height: 190px;
+
+                right: 3%;
+                top: 300px;
+            }
+
+            .hero-content {
+                margin-top: 480px;
+            }
+
+            .title-box {
+                min-width: 90%;
+                padding: 10px 20px;
+            }
+
+            .hero-title {
+                font-size: 70px;
+                letter-spacing: -4px;
+            }
+
+            .tagline {
+                font-size: 18px;
+                padding: 0 20px;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 550px) {
+
+            .hero {
+                min-height: 850px;
+            }
+
+            .main-photo {
+                width: 280px;
+                height: 440px;
+            }
+
+            .left-photo {
+                width: 110px;
+                height: 145px;
+            }
+
+            .right-photo {
+                width: 110px;
+                height: 150px;
+            }
+
+            .hero-content {
+                margin-top: 420px;
+            }
+
+            .hero-title {
+                font-size: 52px;
+                letter-spacing: -3px;
+            }
+
+            .tagline {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+    <header>
+
+        <a href="#home" class="logo">
+            Maydel Leyros Tadeo
+        </a>
+
+        <nav>
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#Hobbies" class="nav-link">Hobbies</a>
+            <a href="#Bible Verse" class="nav-link">Bible Verse</a>
+                <span class="dot"></span>
+            </a>
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         HOME / HERO
+    ========================== -->
+    <main>
+
+        <section class="hero" id="home">
+
+            <div class="photo-area">
+
+                <!--
+                    CHANGE THESE IMAGES TO YOUR OWN PHOTOS.
+
+                    Example:
+                    src="images/me.jpg"
+                -->
+
+                <img
+                    src="maydelpic1.jpg"
+                    alt="Main profile"
+                    class="main-photo"
+                >
+
+                <img
+                    src="maydelpic2.jpg"
+                    class="small-photo left-photo"
+                >
+
+                <img
+                    src="maydelpic3.jpg"
+                    class="small-photo right-photo"
+                >
+
+            </div>
+
+
+            <div class="hero-content">
+
+                <div class="title-box">
+                    <h1 class="hero-title">
+                        Personal Blog
+                    </h1>
+                </div>
+
+                <p class="tagline">
+                    Ideas for home, wellness, travel, and the everyday.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ABOUT
+        ========================== -->
+        <section class="about">
+
+            <div class="about-container">
+
+                <p class="section-label">
+                    Welcome
+                </p>
+
+                <h2>
+                    A little corner of inspiration.
+                </h2>
+
+                <p>
+                    Hi vlog!! Come with me to Sharing my outfits, unboxing happy parcels, and collecting beautiful memories through travel. A space for fashion, little joys, new adventures, and everything that makes life special. 🤍📦✈️
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             BLOG
+        ========================== -->
+        <section class="Hobbies" id="Hobbies">
+
+            <div class="blog-heading">
+
+                <h2>
+                    My Hobbies
+                </h2>
+
+            </div>
+
+
+            <div class="blog-grid">
+
+                <!-- BLOG 1 -->
+
+                <article class="blog-card">
+
+                    <img
+                        src="maydelparcel.jpg"
+                        alt="Home interior"
+                    >
+
+                    <span>Parcels</span>
+
+                    <h3>
+                        Good things come in parcels. ✨
+                    </h3>
+                </article>
+
+
+                <!-- BLOG 2 -->
+
+                <article class="blog-card">
+
+                    <img
+                        src="maydeltravel.jpg"
+                        alt="Travel"
+                    >
+
+                    <span>Travel</span>
+
+                    <h3>
+                       New places, new memories.
+                    </h3>
+                </article>
+
+
+                <!-- BLOG 3 -->
+
+                <article class="blog-card">
+
+                    <img
+                        src="maydeloutfit.jpg"
+                        alt="Lifestyle"
+                    >
+
+                    <span>Outfit</span>
+
+                    <h3>
+                        Dress well, feel good, and own your style.
+                    </h3>
+                </article>
+
+            </div>
+        </section>
+
+
+        <!-- =========================
+             BIble Verse
+        ========================== -->
+        <section
+            class="contact"
+            id="Bible Verse"
+            style="background:#f4efe8;"
+        >
+
+            <h2>
+                 Psalm 37:4
+            </h2>
+
+            <p>
+                "Take delight in the Lord, and he will give you the desires of your heart"
+            </p>
+
+            <a href="#" class="contact-btn">
+                Back to home
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+    <footer>
+
+        <p>
+            
+        </p>
+
+    </footer>
+
+</body>
+</html>
